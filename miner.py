@@ -90,6 +90,10 @@ while True:
         if("n=" in i):result['n'] = i[2:];
         if("sf=" in i):result['sf'] = i[3:];
         if("ef=" in i):result['ef'] = i[3:];
+    # DEBUG
+    # result['n'] = "1234577"
+    # result['sf'] = "20"
+    # result['ef'] = "40"
     print(time.asctime() + " I " + "got TASK:"+result['k'] +","+result['n']+","+result['sf']+","+result['ef'],file=logfile)
 
     child = subprocess.Popen(['mfaktc-win-64.exe','-tf',result['n'],result['sf'],result['ef']],stdout=subprocess.PIPE)
@@ -101,7 +105,7 @@ while True:
         if("has a factor:" in output):
             foundfactor = True;
             factor = output.find("has a factor:") + len("has a factor:")+1
-            factor = output[factor:output.find("\n",factor)];
+            factor = output[factor:(output.find("\n",factor)-1)];
             child.terminate();
             break;
         if(stat):
