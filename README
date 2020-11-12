@@ -1,0 +1,3 @@
+1. ```pip install gputil```
+2. modify "baabaagoat" in miner.py to your  primenet user id
+2. run miner.py
